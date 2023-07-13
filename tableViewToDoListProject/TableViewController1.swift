@@ -155,21 +155,6 @@ class TableViewController1: UITableViewController {
     func clickToDisplay(indexPathRow: Int) {
         
         let alert = UIAlertController(title: "You selected", message: "\(myTasks[indexPathRow].title)", preferredStyle: .alert)
-        let openInVC = UIAlertAction(title: "Open in VC", style: .destructive) { [self] _ in
-            
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            if let nextView = storyBoard.instantiateViewController(withIdentifier: "ViewControllerForDetailsView") as? ViewControllerForDetailsView {
-                let data = myTasks[indexPathRow]
-                
-                nextView.titleFromTVC = data.title
-                nextView.dateFromTVC = data.date
-                nextView.timeFromTVC = data.time
-                nextView.commentsFromTVC = data.comments
-                
-                navigationController?.pushViewController(nextView, animated: true)
-            }
-        }
-        
         let openInTVC = UIAlertAction(title: "Open in TVC", style: .destructive) { [self] _ in
             
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -193,7 +178,6 @@ class TableViewController1: UITableViewController {
         
         let cancel = UIAlertAction(title: "OK", style: .cancel)
         
-        alert.addAction(openInVC)
         alert.addAction(openInTVC)
         alert.addAction(highlighted)
         alert.addAction(cancel)
